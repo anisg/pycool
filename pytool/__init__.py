@@ -59,3 +59,31 @@ def parse(description,arr=[]):
 
 def createDir(path):
 	return os.makedirs(path)
+
+def isFile(path):
+	return os.path.isfile(path)
+
+def shell(cmd):
+	return os.popen(cmd).read()
+
+def fsize(path):
+	return os.path.getsize(path)
+
+def hbyte(size,precision=2):
+    abbrevs = (
+        (1<<50, 'PB'),
+        (1<<40, 'TB'),
+        (1<<30, 'GB'),
+        (1<<20, 'MB'),
+        (1<<10, 'kB'),
+        (1, 'bytes')
+    )
+    if bytes == 1:
+        return '1 byte'
+    for factor, suffix in abbrevs:
+        if size >= factor:
+            break
+    return '%.*f %s' % (precision, size / factor, suffix)
+
+def hsize(path, precision=1):
+	return hbyte(fsize(path), precision)
