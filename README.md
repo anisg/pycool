@@ -32,4 +32,4 @@ $ python pretty.py -i path/to/json
 ## note
 
 - works with python 2 and 3
-- resolves utf-8 encoding problem with python2
+- resolves utf-8 encoding problem with python 2
