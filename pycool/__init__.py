@@ -4,9 +4,10 @@ if sys.version_info < (3, 0):
 	sys.setdefaultencoding("utf-8")
 import os, json, requests, argparse
 
-#VARIABLE
+#MACRO
 
-scriptDir= os.path.dirname(sys.argv[0])
+scriptDir = os.path.dirname(sys.argv[0])
+workingDir = os.getcwd()
 
 #IO
 
@@ -56,6 +57,7 @@ def parse(description,arr=[]):
 
 #todo:
 #confirm (yes,no)
+
 import shutil
 def removeDir(path):
     shutil.rmtree(path)

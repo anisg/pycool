@@ -1,6 +1,0 @@
-pytool/__init__.py
-pytool.egg-info/PKG-INFO
-pytool.egg-info/SOURCES.txt
-pytool.egg-info/dependency_links.txt
-pytool.egg-info/not-zip-safe
-pytool.egg-info/top_level.txt
