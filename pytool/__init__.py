@@ -56,6 +56,9 @@ def parse(description,arr=[]):
 
 #todo:
 #confirm (yes,no)
+import shutil
+def removeDir(path):
+    shutil.rmtree(path)
 
 def createDir(path):
 	return os.makedirs(path)
