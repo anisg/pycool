@@ -58,8 +58,8 @@ def parse(description,arr=[]):
 #todo:
 #confirm (yes,no)
 
-import shutil
 def removeDir(path):
+    import shutil
     shutil.rmtree(path)
 
 def createDir(path):
@@ -68,8 +68,28 @@ def createDir(path):
 def isFile(path):
 	return os.path.isfile(path)
 
+def abspath(path):
+    os.path.abspath(path)
+
+def basename(path):
+    return os.path.basename(path)
+
+rc=0
 def shell(cmd):
-	return os.popen(cmd).read()
+    global rc
+    x=os.popen(cmd)
+    s = x.read()
+    rc=x.close() 
+    if rc == None:
+        rc = 0
+    return s
+def sh(cmd):
+    return shell(cmd)
+
+def retcode():
+    return rc
+def rcode():
+    return retcode()
 
 def fsize(path):
 	return os.path.getsize(path)
@@ -92,3 +112,34 @@ def hbyte(size,precision=2):
 
 def hsize(path, precision=1):
 	return hbyte(fsize(path), precision)
+
+# INPUT
+def confirm(msg, default='yes'):
+    import inquirer
+    confirm = {
+    inquirer.Confirm('confirmed',
+                     message=msg,
+                     default=True if default is 'yes' else False),
+    }
+    confirmation = inquirer.prompt(confirm)
+    return confirmation["confirmed"]
+
+def choose(msg, choices):
+    import inquirer
+    qs = [
+        inquirer.List('s',
+                message=msg,
+                choices=choices,
+            ),
+    ]
+    answers = inquirer.prompt(qs)
+    return answers['s']
+
+#basic I/O
+def done(msg="Leaving...",code=0):
+    print("\033[92mDone!\033[0m {msg}".format(msg=msg))
+    exit(code)
+
+def fail(msg="...", code=-1):
+    print("\033[91mError!\033[0m {msg}".format(msg=msg))
+    exit(code)
