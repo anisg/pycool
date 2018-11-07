@@ -83,11 +83,16 @@ def shell(cmd):
     if rc == None:
         rc = 0
     return s
+
 def sh(cmd):
-    return shell(cmd)
+    print("\033[93m$\033[0m {cmd}".format(cmd=cmd))
+    global rc
+    rc = os.system(cmd)
+    return rc
 
 def retcode():
     return rc
+
 def rcode():
     return retcode()
 
