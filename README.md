@@ -10,6 +10,7 @@ $ pip install pycool
 
 **pretty.py**:
 ```python
+#!/usr/bin/env python
 from pycool import *
 
 args = parse('prettyprint a json file',[
